@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<body>
+    <p>Calcul de l'heure</p>
+
+    <input type="number" id="lune" min="1" max="2" placeholder="Lune" />
+    <input type="number" id="soleil" min="1" max="2" placeholder="Soleil" />
+    <input type="number" id="terre" min="1" max="2" placeholder="Terre" />
+    <button id="calculer" onclick="calculer()">Calculer</button>
+
+    <p id="resultat"></p>
+
+    <script>
+        function determineHeure(lune, soleil, terre) {
+        let valeurTerre = terre;
+        let pouvoirTerre = terre;
+
+        if (soleil === 1) {
+            valeurTerre = 0;
+            pouvoirTerre = 0;
+        } else if (soleil === 2) {
+            valeurTerre = terre * 2;
+        }
+
+        let resultat = lune + soleil + valeurTerre;
+
+        if (pouvoirTerre === 1) {
+            resultat += 2;
+        } else if (pouvoirTerre === 2) {
+            return 6;
+        }
+
+        if (lune === 1) {
+            resultat -= 2;
+        } else if (lune === 2) {
+            resultat = Math.floor(resultat / 2);
+        }
+
+        return resultat;
+        }
+
+        function verifierChamps() {
+        const lune = parseInt(document.getElementById("lune").value);
+        const soleil = parseInt(document.getElementById("soleil").value);
+        const terre = parseInt(document.getElementById("terre").value);
+        const bouton = document.getElementById("calculer");
+
+        const champsOK = [lune, soleil, terre].every(val => val === 1 || val === 2);
+        bouton.disabled = !champsOK;
+
+        // On vide le résultat tant qu'on n'a pas 3 valeurs valides
+        if (!champsOK) {
+        document.getElementById("resultat").textContent = "";
+        }
+    }
+
+        function calculer() {
+        const lune = parseInt(document.getElementById("lune").value);
+        const soleil = parseInt(document.getElementById("soleil").value);
+        const terre = parseInt(document.getElementById("terre").value);
+
+        const res = determineHeure(lune, soleil, terre);
+        document.getElementById("resultat").textContent = "Résultat : " + res;
+        }
+    </script>
+</body>
+</html>

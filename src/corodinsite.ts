@@ -1,5 +1,6 @@
 export function determineHeure( cadranLune : 1|2, cadranSoleil:1|2, cadranTerre:1|2):number{
 
+
     let valeurTerre = cadranTerre;
     let pouvoirTerre = cadranTerre;
     let ignorerTerre = false;
