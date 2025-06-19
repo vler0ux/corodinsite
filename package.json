@@ -7,11 +7,14 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "test": "vitest"
+    "test": "vitest",
+    "prepare": "husky",
+    "test:unit": "vitest run"
   },
   "devDependencies": {
     "@playwright/test": "^1.53.1",
     "@types/node": "^24.0.3",
+    "husky": "^9.1.7",
     "typescript": "~5.8.3",
     "vite": "^6.3.5"
   }
